@@ -1,0 +1,8 @@
+name: MasterPromoteKills
+author: Sinnoh
+version: 1.0
+
+depend: [MasterPromote]
+
+main: me.sinnoh.MasterPromoteKills.MasterPromoteKills
+
