@@ -82,5 +82,15 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 			return false;
 		}
 	}
+
+
+	@Override
+	public void save()
+	{
+		synchronized (this.players) 
+		{
+			sUtil.saveMap();
+		}
+	}
 	
 }
