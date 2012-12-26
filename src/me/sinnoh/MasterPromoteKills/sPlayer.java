@@ -20,12 +20,12 @@ public class sPlayer implements Serializable
 	
 	public void addKill()
 	{
-		this.kills++;
+		this.kills = this.kills+1;
 	}
 	
 	public void addDeath()
 	{
-		this.deaths++;
+		this.deaths = this.deaths+1;
 	}
 	
 	public int getKills()

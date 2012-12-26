@@ -63,7 +63,7 @@ public class sUtil
 		}
 	}
 	
-	public void checkPlayer(Player player)
+	public static void checkPlayer(Player player)
 	{
 		sPlayer sp = plugin.getsPlayer(player);
 		if(plugin.getConfig().getBoolean("EnableRankedKills"))
