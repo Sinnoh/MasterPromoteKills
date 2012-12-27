@@ -5,6 +5,7 @@ import java.util.List;
 
 import me.sinnoh.MasterPromote.MasterPromote;
 import me.sinnoh.MasterPromote.Api.MPPlugin;
+import me.sinnoh.MasterPromoteKills.Metrics.Metrics;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -31,6 +32,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		this.mainpl = (MasterPromote) Bukkit.getPluginManager().getPlugin("MasterPromote");
 		this.mainpl.registerMPPlugin(this);
 		getServer().getPluginManager().registerEvents(new MPListener(), this);
+		setupMetrics();
 	}
 	
 	
@@ -67,6 +69,21 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 	public List<sPlayer> getsPlayers()
 	{
 		return this.players;
+	}
+	
+	public Boolean setupMetrics()
+	{
+		try
+		{
+			Metrics metrics = new Metrics(this);
+			metrics.start();
+			sUtil.log("PluginMetrics enabled!");
+			return true;
+		}catch(Exception e)
+		{
+			sUtil.log("Failed to enable PluginMetrics");
+			return false;
+		}
 	}
 
 

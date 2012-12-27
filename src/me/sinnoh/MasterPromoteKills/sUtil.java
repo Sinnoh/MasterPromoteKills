@@ -12,6 +12,7 @@ import me.sinnoh.MasterPromote.MasterPromote;
 import me.sinnoh.MasterPromote.Api.PlayerPromoteEvent;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class sUtil 
@@ -98,7 +99,19 @@ public class sUtil
 	
 	public static void log(String msg)
 	{
-		Bukkit.getConsoleSender().sendMessage(msg);
+		Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.DARK_GRAY + msg);
+	}
+	
+	public static void log(String msg, Boolean prefix)
+	{
+		if(!prefix)
+		{
+			Bukkit.getConsoleSender().sendMessage(msg);
+		}
+		else
+		{
+			Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.DARK_GRAY + msg);
+		}
 	}
 
 }
