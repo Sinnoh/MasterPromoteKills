@@ -3,8 +3,8 @@ package me.sinnoh.MasterPromoteKills;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.sinnoh.MasterPromote.MPPlugin;
 import me.sinnoh.MasterPromote.MasterPromote;
+import me.sinnoh.MasterPromote.Api.MPPlugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -15,6 +15,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 	
 	public static MasterPromoteKills instance;
 	private List<sPlayer> players;
+	private MasterPromote mainpl;
 	
 	public void onDisable()
 	{
@@ -27,8 +28,8 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		instance = this;
 		this.players = sUtil.loadMap();
 		loadConfig();
-		MasterPromote main = (MasterPromote) Bukkit.getPluginManager().getPlugin("MasterPromote");
-		main.registerMPPlugin(this);
+		this.mainpl = (MasterPromote) Bukkit.getPluginManager().getPlugin("MasterPromote");
+		this.mainpl.registerMPPlugin(this);
 		getServer().getPluginManager().registerEvents(new MPListener(), this);
 	}
 	
@@ -91,6 +92,11 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		{
 			sUtil.saveMap();
 		}
+	}
+	
+	public MasterPromote getMasterPromote()
+	{
+		return this.mainpl;
 	}
 	
 }

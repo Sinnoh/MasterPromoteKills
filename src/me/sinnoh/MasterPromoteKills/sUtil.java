@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.sinnoh.MasterPromote.MasterPromote;
-import me.sinnoh.MasterPromote.Events.PlayerPromoteEvent;
+import me.sinnoh.MasterPromote.Api.PlayerPromoteEvent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
