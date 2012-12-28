@@ -15,7 +15,6 @@ public class sPlayer implements Serializable
 	public sPlayer(Player player)
 	{
 		this.name = player.getName();
-		this.kills = 0;
 	}
 	
 	public void addKill()
