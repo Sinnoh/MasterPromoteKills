@@ -6,6 +6,7 @@ import java.util.List;
 import me.sinnoh.MasterPromote.MasterPromote;
 import me.sinnoh.MasterPromote.Api.MPPlugin;
 import me.sinnoh.MasterPromoteKills.Commands.CheckPlayerCommand;
+import me.sinnoh.MasterPromoteKills.Commands.ResetPlayerCommand;
 import me.sinnoh.MasterPromoteKills.Metrics.Metrics;
 
 import org.bukkit.Bukkit;
@@ -45,7 +46,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		getConfig().options().copyDefaults(true);
 		getConfig().addDefault("EnableRankedKills", true);
 		List<String> ranks = new ArrayList<String>();
-		ranks.add("Murderer,25");
+		ranks.add("Deathbringer,25");
 		getConfig().addDefault("KillRanks", ranks);
 		getConfig().addDefault("EnableRankedDeaths", false);
 		ranks = new ArrayList<String>();
@@ -61,6 +62,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 	public void commands()
 	{
 		getCommand("checkplayer").setExecutor(new CheckPlayerCommand());
+		getCommand("resetplayer").setExecutor(new ResetPlayerCommand());
 	}
 	
 	public sPlayer getsPlayer(Player player)

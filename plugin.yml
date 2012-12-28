@@ -9,4 +9,6 @@ main: me.sinnoh.MasterPromoteKills.MasterPromoteKills
 commands:
   checkplayer:
     usage: /checkplayer <Player>
+  resetplayer:
+    usage: /resetplayer <Player> <kills/deaths/both>
 
