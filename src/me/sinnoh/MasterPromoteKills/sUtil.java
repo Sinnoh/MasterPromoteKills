@@ -99,7 +99,7 @@ public class sUtil
 	
 	public static void log(String msg)
 	{
-		Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.DARK_GRAY + msg);
+		Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.GRAY + msg);
 	}
 	
 	public static void log(String msg, Boolean prefix)
@@ -110,7 +110,7 @@ public class sUtil
 		}
 		else
 		{
-			Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.DARK_GRAY + msg);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[" + plugin.getDescription().getName() + "] " + ChatColor.GRAY + msg);
 		}
 	}
 
