@@ -31,7 +31,7 @@ public class MPListener implements Listener
 				{
 					skiller.addKill();
 				}
-				if(!victim.hasPermission("MasterPromote.bypass.deaths") && !victim.hasPermission("MasterPromoteKills.bypass.*") && plugin.getConfig().getBoolean("CountPVPDeaths"))
+				if(!victim.hasPermission("MasterPromoteKills.bypass.deaths") && !victim.hasPermission("MasterPromoteKills.bypass.*") && plugin.getConfig().getBoolean("CountPVPDeaths"))
 				{
 					svictim.addDeath();
 				}
@@ -42,14 +42,20 @@ public class MPListener implements Listener
 			{
 				Player killer = (Player) event.getEntity().getKiller();
 				sPlayer skiller = plugin.getsPlayer(killer);
-				skiller.addKill();
+				if(!killer.hasPermission("MasterPromoteKills.bypass.kills") && !killer.hasPermission("MasterPromoteKills.bypass.*"))
+				{
+					skiller.addKill();
+				}
 				sUtil.checkPlayer(killer);
 			}
 			else if(edevent.getEntity().getType().equals(EntityType.PLAYER) && plugin.getConfig().getBoolean("CountPVEDeaths"))//PVE Mob killed Player
 			{
 				Player victim = (Player) event.getEntity();
 				sPlayer svictim = plugin.getsPlayer(victim);
-				svictim.addDeath();
+				if(!victim.hasPermission("MasterPromoteKills.bypass.deaths") && !victim.hasPermission("MasterPromoteKills.bypass.*"))
+				{
+						svictim.addDeath();
+				}
 				sUtil.checkPlayer(victim);
 			}
 		}
@@ -57,7 +63,10 @@ public class MPListener implements Listener
 		{
 			Player victim = (Player) event.getEntity();
 			sPlayer svictim = plugin.getsPlayer(victim);
-			svictim.addDeath();
+			if(!victim.hasPermission("MasterPromoteKills.bypass.deaths") && !victim.hasPermission("MasterPromoteKills.bypass.*"))
+			{
+					svictim.addDeath();
+			}
 			sUtil.checkPlayer(victim);
 		}
 	}
