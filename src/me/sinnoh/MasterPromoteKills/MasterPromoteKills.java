@@ -5,6 +5,7 @@ import java.util.List;
 
 import me.sinnoh.MasterPromote.MasterPromote;
 import me.sinnoh.MasterPromote.Api.MPPlugin;
+import me.sinnoh.MasterPromoteKills.Commands.CheckPlayerCommand;
 import me.sinnoh.MasterPromoteKills.Metrics.Metrics;
 
 import org.bukkit.Bukkit;
@@ -21,6 +22,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 	public void onDisable()
 	{
 		sUtil.saveMap();
+		sUtil.log("v." + getDescription().getVersion() + " disabled!");
 	}
 	
 	
@@ -32,6 +34,8 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		this.mainpl = (MasterPromote) Bukkit.getPluginManager().getPlugin("MasterPromote");
 		this.mainpl.registerMPPlugin(this);
 		getServer().getPluginManager().registerEvents(new MPListener(), this);
+		commands();
+		sUtil.log("v." + getDescription().getVersion() + " enabled!");
 		setupMetrics();
 	}
 	
@@ -47,9 +51,16 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		ranks = new ArrayList<String>();
 		ranks.add("Victim,25");
 		getConfig().addDefault("DeathRanks", ranks);
+		getConfig().addDefault("CountPVPKills", true);
+		getConfig().addDefault("CountPVPDeaths", true);
 		getConfig().addDefault("CountPVEKills", false);
 		getConfig().addDefault("CountPVEDeaths", false);
 		saveConfig();
+	}
+	
+	public void commands()
+	{
+		getCommand("checkplayer").setExecutor(new CheckPlayerCommand());
 	}
 	
 	public sPlayer getsPlayer(Player player)
@@ -64,6 +75,18 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		sPlayer sp = new sPlayer(player);
 		this.players.add(sp);
 		return sp;
+	}
+	
+	public sPlayer getsPlayer(String s)
+	{
+		for(sPlayer sp : this.players)
+		{
+			if(sp.getName().equals(s))
+			{
+				return sp;
+			}
+		}
+		return null;
 	}
 	
 	public List<sPlayer> getsPlayers()
@@ -93,6 +116,7 @@ public class MasterPromoteKills extends JavaPlugin implements MPPlugin
 		try
 		{
 			reloadConfig();
+			loadConfig();
 			System.out.println("[MasterPromoteKills] reloaded!");
 			return true;
 		}catch(Exception e)
