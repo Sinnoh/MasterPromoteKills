@@ -42,5 +42,15 @@ public class sPlayer implements Serializable
 	{
 		return this.name;
 	}
+	
+	public void setKills(int i)
+	{
+		this.kills = i;
+	}
+	
+	public void setDeaths(int i)
+	{
+		this.deaths = i;
+	}
 
 }
